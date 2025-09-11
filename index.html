@@ -176,15 +176,14 @@
     <section class="contact" id="contact">
       <h2 class="heading">Contact <span>Me</span></h2>
 
-      <form action="#">
+      <form action="#" name="balya-khikam-contact-form">
         <div class="input-box">
-          <input type="text" placeholder="Full Name" />
-          <input type="email" placeholder="Email Address" />
+          <input type="text" placeholder="Full Name" name="nama" />
+          <input type="email" placeholder="Email" name="email" />
         </div>
 
-        <div class="input-box">
-          <input type="number" placeholder="Mobile Number" />
-          <input type="text" placeholder="Email Subject" />
+        <div class="input-box justify-content-center">
+          <input type="number" placeholder="Mobile Number" name="nomer hp" />
         </div>
         <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
         <input type="submit" value="Send Message" class="btn" />
@@ -218,5 +217,16 @@
                   Custom Js
     =========================================== -->
     <script src="main.js"></script>
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyHg6LoiNhQijZu6ENPw24pPTk_-_4MFmV5l9PEKHXRSKbh9GJA8bHJTWlGONjIT_1HEw/exec";
+      const form = document.forms["balya-khikam-contact-form"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
